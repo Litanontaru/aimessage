@@ -12,16 +12,15 @@ angular.module('ngBoilerplate.account', ['ui.router', 'ngResource', 'base64'])
         data : { pageTitle : "Login" }
     })
     .state('register', {
-            url:'/register',
-            views: {
-                'main': {
-                    templateUrl:'account/register.tpl.html',
-                    controller: 'RegisterCtrl'
-                }
-            },
-            data : { pageTitle : "Registration" }
+        url:'/register',
+        views: {
+            'main': {
+                templateUrl:'account/register.tpl.html',
+                controller: 'RegisterCtrl'
             }
-    );
+        },
+        data : { pageTitle : "Registration" }
+    });
 })
 .factory('sessionService', function($http, $base64) {
     var session = {};
