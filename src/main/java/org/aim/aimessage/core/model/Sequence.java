@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = Sequence.COLLECTION_NAME)
 public class Sequence {
-    public static final String COLLECTION_NAME = "sequences";
+    public static final String COLLECTION_NAME = "sequence";
 
     @Id
     private String id;
