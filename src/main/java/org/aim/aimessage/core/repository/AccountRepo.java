@@ -30,10 +30,6 @@ public class AccountRepo {
         return mongoOperations.findOne(Query.query(Criteria.where("login").is(login)), Account.class);
     }
 
-    public List<Account> getAll() {
-        return mongoOperations.findAll(Account.class);
-    }
-
     public void remove(Long id) {
         mongoOperations.remove(Query.query(Criteria.where("id").is(id)), Account.class);
     }
