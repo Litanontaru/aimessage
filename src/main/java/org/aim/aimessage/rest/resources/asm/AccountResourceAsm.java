@@ -20,7 +20,6 @@ public class AccountResourceAsm extends ResourceAssemblerSupport<Account, Accoun
         res.setPassword(account.getPassword());
         res.setName(account.getName());
         res.add(linkTo(methodOn(AccountController.class).find(account.getId())).withSelfRel());
-//        res.create(linkTo(methodOn(AccountController.class).findAllBlogs(account.getId())).withRel("blogs"));
         return res;
     }
 }

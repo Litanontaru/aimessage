@@ -14,9 +14,8 @@ public class AccountListResourceAsm extends ResourceAssemblerSupport<AccountList
 
     @Override
     public AccountListResource toResource(AccountListResource.AccountList accountList) {
-        List<AccountResource> resList = new AccountResourceAsm().toResources(accountList.getAccounts());
-        AccountListResource finalRes = new AccountListResource();
-        finalRes.setAccounts(resList);
-        return finalRes;
+        AccountListResource result = new AccountListResource();
+        result.setAccounts(new AccountResourceAsm().toResources(accountList.getAccounts()));
+        return result;
     }
 }
