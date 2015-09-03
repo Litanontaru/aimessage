@@ -1,4 +1,4 @@
-package org.aim.aimessage.core.repository;
+package org.aim.aimessage.core.repository.exception;
 
 public class SequenceException extends RuntimeException {
     public SequenceException() {

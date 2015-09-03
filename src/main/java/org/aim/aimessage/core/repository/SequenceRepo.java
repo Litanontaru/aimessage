@@ -1,6 +1,7 @@
 package org.aim.aimessage.core.repository;
 
 import org.aim.aimessage.core.model.Sequence;
+import org.aim.aimessage.core.repository.exception.SequenceException;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
