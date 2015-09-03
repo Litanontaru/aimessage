@@ -26,7 +26,7 @@ angular.module('ngBoilerplate.account', ['ui.router', 'ngResource', 'base64'])
 .factory('sessionService', function($http, $base64) {
     var session = {};
     session.login = function(data) {
-        return $http.post("/basic-web-app/login", "username=" + data.name +
+        return $http.post("/aimessage/login", "username=" + data.login +
         "&password=" + data.password, {
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         } ).then(function(data) {
@@ -51,18 +51,18 @@ angular.module('ngBoilerplate.account', ['ui.router', 'ngResource', 'base64'])
 .factory('accountService', function($resource) {
     var service = {};
     service.register = function(account, success, failure) {
-        var Account = $resource("/basic-web-app/rest/accounts");
+        var Account = $resource("/aimessage/rest/accounts");
         Account.save({}, account, success, failure);
     };
     service.getAccountById = function(accountId) {
-        var Account = $resource("/basic-web-app/rest/accounts/:paramAccountId");
+        var Account = $resource("/aimessage/rest/accounts/:paramAccountId");
         return Account.get({paramAccountId:accountId}).$promise;
     };
     service.userExists = function(account, success, failure) {
-        var Account = $resource("/basic-web-app/rest/accounts");
-        var data = Account.get({name:account.name, password:account.password}, function() {
+        var Account = $resource("/aimessage/rest/accounts");
+        var data = Account.get({name:account.login, password:account.password}, function() {
             var accounts = data.accounts;
-            if(accounts.length !== 0) {
+            if (accounts.length !== 0) {
                 success(account);
             } else {
                 failure();
@@ -71,7 +71,7 @@ angular.module('ngBoilerplate.account', ['ui.router', 'ngResource', 'base64'])
         failure);
     };
     service.getAllAccounts = function() {
-          var Account = $resource("/basic-web-app/rest/accounts");
+          var Account = $resource("/aimessage/rest/accounts");
           return Account.get().$promise.then(function(data) {
             return data.accounts;
           });
