@@ -15,6 +15,7 @@ public class AccountUserDetails implements UserDetails {
     }
 
     @Override
+    //TODO Define roles
     public Collection<? extends GrantedAuthority> getAuthorities() {
         GrantedAuthority authority = new GrantedAuthority() {
             @Override
