@@ -1,6 +1,7 @@
 angular.module( 'ngBoilerplate.chat', [
   'ui.router',
   'placeholders',
+  'ngResource',
   'ui.bootstrap'
 ])
 
@@ -9,19 +10,23 @@ angular.module( 'ngBoilerplate.chat', [
     url: '/chat',
     views: {
       "main": {
-        controller: 'AboutCtrl',
+        controller: 'ChatCtrl',
         templateUrl: 'chat/chat.tpl.html'
       }
     },
-    data:{ pageTitle: 'What is It?' }
+    data:{ pageTitle: 'Chats' }
   });
 })
 
-.controller( 'AboutCtrl', function AboutCtrl( $scope ) {
-  // This is simple a demo for UI Boostrap.
-  $scope.dropdownDemoItems = [
-    "The first choice!",
-    "And another choice for you.",
-    "but wait! A third!"
-  ];
-});
+.factory('chatService', function($resource) {
+  var service = {};
+  service.getChats = function() {
+    var chats = $resource("/aimessage/rest/chat/all");
+    return chats.get().$promise.then(function(data) {
+      return data.chats;
+    });
+  };
+  return service;
+})
+
+;
