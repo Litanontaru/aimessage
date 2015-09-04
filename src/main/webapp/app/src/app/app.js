@@ -3,6 +3,7 @@ angular.module( 'ngBoilerplate', [
   'templates-common',
   'ngBoilerplate.home',
   'ngBoilerplate.account',
+  'ngBoilerplate.chat',
   'ui.router'
 ])
 
