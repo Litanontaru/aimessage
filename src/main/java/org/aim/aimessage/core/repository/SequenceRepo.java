@@ -21,18 +21,18 @@ public class SequenceRepo {
     }
 
     public Long getNextSequenceId(String key) {
-        // получаем объект Sequence по наименованию коллекции
+        // РїРѕР»СѓС‡Р°РµРј РѕР±СЉРµРєС‚ Sequence РїРѕ РЅР°РёРјРµРЅРѕРІР°РЅРёСЋ РєРѕР»Р»РµРєС†РёРё
         Query query = new Query(Criteria.where("_id").is(key));
 
-        // увеличиваем поле sequence на единицу
+        // СѓРІРµР»РёС‡РёРІР°РµРј РїРѕР»Рµ sequence РЅР° РµРґРёРЅРёС†Сѓ
         Update update = new Update();
         update.inc("sequence", 1);
 
-        // указываем опцию, что нужно возвращать измененный объект
+        // СѓРєР°Р·С‹РІР°РµРј РѕРїС†РёСЋ, С‡С‚Рѕ РЅСѓР¶РЅРѕ РІРѕР·РІСЂР°С‰Р°С‚СЊ РёР·РјРµРЅРµРЅРЅС‹Р№ РѕР±СЉРµРєС‚
         FindAndModifyOptions options = new FindAndModifyOptions();
         options.returnNew(true);
 
-        // немного магии :)
+        // РЅРµРјРЅРѕРіРѕ РјР°РіРёРё :)
         Sequence sequence = mongoOperations.findAndModify(query, update, options, Sequence.class);
 
         if (sequence == null) {
