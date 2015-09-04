@@ -21,7 +21,10 @@ angular.module( 'ngBoilerplate.home', [
 .controller( 'HomeCtrl', function HomeController( $scope, sessionService, chatService) {
     $scope.isLoggedIn = sessionService.isLoggedIn;
     $scope.logout = sessionService.logout;
-    $scope.chats = chatService.getChats;
+    $scope.chats = [
+      "1",
+      "2"
+    ];
 })
 
 ;

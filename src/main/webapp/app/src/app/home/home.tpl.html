@@ -16,16 +16,27 @@
     </a>
   </div>
 
-    <div class="btn-group" ng-show="isLoggedIn()">
-      <a ng-click="logout()" class="btn btn-large btn-default">
-          <i class="fa fa-book"></i>
-          Logout
-      </a>
-      <a ng-click="chat" class="btn btn-large btn-default">
-          <i class="fa fa-magic"></i>
-          AIMessage me
-      </a>
-    </div>
+  <div class="btn-group" ng-show="isLoggedIn()">
+    <a ng-click="logout()" class="btn btn-large btn-default">
+        <i class="fa fa-book"></i>
+        Logout
+    </a>
+    <a ng-click="chat" class="btn btn-large btn-default">
+        <i class="fa fa-magic"></i>
+        AIMessage me
+    </a>
+  </div>
 
+  <div class="row no-gutters" ng-show="isLoggedIn()">
+    <p>{{chats.length}}</p>
+
+    <table class="table table-striped">
+      <th>Chat Name</th>
+      <th>Action</th>
+      <tr ng-repeat="chat in chats">
+        <td align="left">1</td>
+        <td>2</td>
+      </tr>
+    </table>
+  </div>
 </div>
-
