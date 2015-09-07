@@ -50,9 +50,9 @@
       <th align="right">Action</th>
       <tr ng-repeat="chat in chats">
         <td align="left">
-          <button class="btn btn-sm btn-link" ng-click="chat({chatId:chat.id})" type="submit">{{chat.name}}</button>
+          <button class="btn btn-sm btn-link" ng-click="chatting(chat)" type="submit">{{chat.name}}</button>
         <td>
-          <button class="btn btn-sm btn-link" ng-click="remove({chatId:chat.id})" type="submit">Delete</button>
+          <button class="btn btn-sm btn-link" ng-click="remove(chat)" type="submit">Delete</button>
         </td>
       </tr>
     </table>

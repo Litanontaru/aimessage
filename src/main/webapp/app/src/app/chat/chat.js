@@ -35,9 +35,16 @@ angular.module('ngBoilerplate.chat', [
             var Chat = $resource("/aimessage/rest/chat");
             Chat.save({}, chat, success, failure);
         };
-        service.removeChat = function (chatId) {
-            var Chat = $resource("/aimessage/rest/chat/remove/:paramChatId");
-            return Chat.get({paramChatId: chatId}).$promise;
+        service.removeChat = function (chat) {
+            var ls = chat.links;
+            if (ls != null) {
+                for (var i in ls) {
+                    if (ls.hasOwnProperty(i) && ls[i].rel == "rm") {
+                        var Chat = $resource(ls[i].href);
+                        return Chat.get().$promise;
+                    }
+                }
+            }
         };
         return service;
     })

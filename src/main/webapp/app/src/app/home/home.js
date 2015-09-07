@@ -46,8 +46,8 @@ angular.module('ngBoilerplate.home', [
         $scope.isNewChat = function () {
             return localStorage.getItem("newChat") !== null;
         };
-        $scope.remove = function(chatId) {
-            chatService.removeChat(chatId);
+        $scope.remove = function(chat) {
+            chatService.removeChat(chat);
         };
     })
 
