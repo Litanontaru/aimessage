@@ -27,8 +27,10 @@ public class ChatRepo {
         return mongoOperations.findOne(Query.query(Criteria.where("id").is(id)), Chat.class);
     }
 
-    public void remove(Long id) {
+    public Chat remove(Long id) {
+        Chat result = get(id);
         mongoOperations.remove(Query.query(Criteria.where("id").is(id)), Chat.class);
+        return result;
     }
 
     public List<Chat> find(Long accountId) {
