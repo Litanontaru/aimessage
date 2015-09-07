@@ -30,7 +30,6 @@ angular.module('ngBoilerplate.account', ['ui.router', 'ngResource', 'base64'])
                 "&password=" + data.password, {
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).then(function (data) {
-                alert("login successful");
                 localStorage.setItem("session", {});
             }, function (data) {
                 alert("error logging in");
@@ -43,11 +42,6 @@ angular.module('ngBoilerplate.account', ['ui.router', 'ngResource', 'base64'])
             return localStorage.getItem("session") !== null;
         };
         return session;
-    })
-
-    .factory('blogService', function ($resource) {
-        var service = {};
-        return service;
     })
 
     .factory('accountService', function ($resource) {
