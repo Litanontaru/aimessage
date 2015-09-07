@@ -16,6 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -35,6 +36,7 @@ public class ChatController {
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @PreAuthorize("permitAll")
     public ResponseEntity<ChatListResource> list() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {
@@ -56,7 +58,7 @@ public class ChatController {
         }
     }
 
-    @RequestMapping(value = "/{accountId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{chatId}", method = RequestMethod.GET)
     @PreAuthorize("permitAll")
     public ResponseEntity<ChatResource> find(@PathVariable Long chatId) {
         Chat chat = chatService.find(chatId);
@@ -64,6 +66,29 @@ public class ChatController {
             return new ResponseEntity<ChatResource>(new ChatResourceAsm().toResource(chat), HttpStatus.OK);
         } else {
             return new ResponseEntity<ChatResource>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    @PreAuthorize("permitAll")
+    public ResponseEntity<ChatResource> createChat(@RequestBody ChatResource sentChat) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            UserDetails user = (UserDetails) principal;
+            Account account = accountService.find(user.getUsername());
+            if (account == null) {
+                throw new ForbiddenException();
+            } else {
+                Chat chat = sentChat.toChat();
+                chatService.create(chat, account.getId());
+                try {
+                    return new ResponseEntity<ChatResource>(new ChatResourceAsm().toResource(chat), HttpStatus.OK);
+                } catch (Exception e) {
+                    return new ResponseEntity<ChatResource>(HttpStatus.NOT_FOUND);
+                }
+            }
+        } else {
+            throw new ForbiddenException();
         }
     }
 }

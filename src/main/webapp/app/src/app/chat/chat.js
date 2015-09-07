@@ -2,7 +2,8 @@ angular.module( 'ngBoilerplate.chat', [
   'ui.router',
   'placeholders',
   'ngResource',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ngBoilerplate.account'
 ])
 
 .config(function config( $stateProvider ) {
@@ -18,13 +19,21 @@ angular.module( 'ngBoilerplate.chat', [
   });
 })
 
-.factory('chatService', function($resource) {
+.factory('chatService', function($resource, sessionService) {
   var service = {};
   service.getChats = function() {
-    var chats = $resource("/aimessage/rest/chat/all");
-    return chats.get().$promise.then(function(data) {
-      return data.chats;
-    });
+    if (sessionService.isLoggedIn()) {
+      var chats = $resource("/aimessage/rest/chat/all");
+      return chats.get().$promise.then(function(data) {
+        return data.chats;
+      });
+    } else {
+      return [];
+    }
+  };
+  service.createChat = function(chat, success, failure) {
+    var Chat = $resource("/aimessage/rest/chat");
+    Chat.save({}, chat, success, failure);
   };
   return service;
 })

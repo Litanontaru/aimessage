@@ -21,22 +21,36 @@
         <i class="fa fa-book"></i>
         Logout
     </a>
-    <a ng-click="chat" class="btn btn-large btn-default">
+    <a ng-click="showNewChat()" class="btn btn-large btn-default">
         <i class="fa fa-magic"></i>
         AIMessage me
     </a>
   </div>
 
   <div class="row no-gutters" ng-show="isLoggedIn()">
-    <p>{{chats.length}}</p>
-
-    <table class="table table-striped">
-      <th>Chat Name</th>
-      <th>Action</th>
-      <tr ng-repeat="chat in chats">
-        <td align="left">1</td>
-        <td>2</td>
-      </tr>
-    </table>
+    <div class="row no-gutters" ng-show="isNewChat()">
+      <form ng-submit="createChat()">
+        <div class="form-group">
+          <p align="left">
+            <label>Chat name:</label>
+          </p>
+          <input type="text" ng-model="newChat.name" class="form-control"/>
+        </div>
+        <button class="btn btn-success" type="submit">Create</button>
+      </form>
+    </div>
+    <div class="row no-gutters" ng-hide="isNewChat()">
+      <p align="left">
+        <label>My Chats</label>
+      </p>
+      <table class="table table-striped">
+        <th>Chat Name</th>
+        <th>Action</th>
+        <tr ng-repeat="chat in chats">
+          <td align="left">{{chat.name}}</td>
+          <td align="left">---</td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>
