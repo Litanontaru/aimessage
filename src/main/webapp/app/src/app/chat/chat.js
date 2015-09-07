@@ -21,7 +21,7 @@ angular.module('ngBoilerplate.chat', [
 
     .factory('chatService', function ($resource, sessionService) {
         var service = {};
-        service.getChats = function () {
+        service.getAllChats = function () {
             if (sessionService.isLoggedIn()) {
                 var chats = $resource("/aimessage/rest/chat/all");
                 return chats.get().$promise.then(function (data) {
@@ -34,6 +34,10 @@ angular.module('ngBoilerplate.chat', [
         service.createChat = function (chat, success, failure) {
             var Chat = $resource("/aimessage/rest/chat");
             Chat.save({}, chat, success, failure);
+        };
+        service.removeChat = function (chatId) {
+            var Chat = $resource("/aimessage/rest/chat/remove/:paramChatId");
+            return Chat.get({paramChatId: chatId}).$promise;
         };
         return service;
     })

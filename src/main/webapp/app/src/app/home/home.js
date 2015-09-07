@@ -16,7 +16,7 @@ angular.module('ngBoilerplate.home', [
             },
             resolve: {
                 chats: function (chatService) {
-                    return chatService.getChats();
+                    return chatService.getAllChats();
                 }
             },
             data: {pageTitle: 'Home'}
@@ -45,6 +45,9 @@ angular.module('ngBoilerplate.home', [
         };
         $scope.isNewChat = function () {
             return localStorage.getItem("newChat") !== null;
+        };
+        $scope.remove = function(chatId) {
+            chatService.removeChat(chatId);
         };
     })
 
