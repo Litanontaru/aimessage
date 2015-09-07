@@ -20,6 +20,7 @@ public class ChatResourceAsm extends ResourceAssemblerSupport<Chat, ChatResource
         res.setAccounts(chat.getAccounts());
 
         res.add(linkTo(methodOn(ChatController.class).find(chat.getId())).withSelfRel());
+        res.add(linkTo(methodOn(ChatController.class).remove(chat.getId())).withRel("rm"));
         return res;
     }
 }

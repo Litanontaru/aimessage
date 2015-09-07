@@ -91,4 +91,15 @@ public class ChatController {
             throw new ForbiddenException();
         }
     }
+
+    @RequestMapping(value = "/remove/{chatId}", method = RequestMethod.GET)
+    @PreAuthorize("permitAll")
+    public ResponseEntity<ChatResource> remove(@PathVariable Long chatId) {
+        Chat chat = chatService.remove(chatId);
+        if (chat != null) {
+            return new ResponseEntity<ChatResource>(new ChatResourceAsm().toResource(chat), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<ChatResource>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

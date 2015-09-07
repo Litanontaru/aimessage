@@ -8,4 +8,5 @@ public interface ChatService {
     List<Chat> find4Account(Long accountId);
     Chat find(Long chatId);
     void create(Chat chat, Long accountId);
+    Chat remove(Long id);
 }

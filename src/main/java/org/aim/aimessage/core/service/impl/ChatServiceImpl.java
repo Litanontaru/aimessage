@@ -49,4 +49,9 @@ public class ChatServiceImpl implements ChatService {
         }
         return accounts;
     }
+
+    @Override
+    public Chat remove(Long id) {
+        return chatRepo.remove(id);
+    }
 }
