@@ -23,7 +23,7 @@ angular.module('ngBoilerplate.home', [
         });
     })
 
-    .controller('HomeCtrl', function HomeController($scope, sessionService, chatService, chats) {
+    .controller('HomeCtrl', function HomeController($scope, $state, $stateParams, sessionService, chatService, chats) {
         $scope.isLoggedIn = sessionService.isLoggedIn;
         $scope.logout = sessionService.logout;
         $scope.chats = chats;
@@ -36,7 +36,11 @@ angular.module('ngBoilerplate.home', [
             chatService.createChat($scope.newChat,
                 function (returnedData) {
                     localStorage.removeItem("newChat");
-                    alert("Success");
+                    $state.go("home", $stateParams, {
+                        reload: true,
+                        inherit: false,
+                        notify: true
+                    });
                 },
                 function () {
                     localStorage.removeItem("newChat");
@@ -47,7 +51,13 @@ angular.module('ngBoilerplate.home', [
             return localStorage.getItem("newChat") !== null;
         };
         $scope.remove = function(chat) {
-            chatService.removeChat(chat);
+            chatService.removeChat(chat, function() {
+                $state.go("home", $stateParams, {
+                    reload: true,
+                    inherit: false,
+                    notify: true
+                });
+            });
         };
     })
 
