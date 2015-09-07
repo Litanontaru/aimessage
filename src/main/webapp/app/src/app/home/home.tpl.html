@@ -49,12 +49,10 @@
       <th>Chat Name</th>
       <th align="right">Action</th>
       <tr ng-repeat="chat in chats">
-        <td align="left">{{chat.name}}</td>
+        <td align="left">
+          <button class="btn btn-sm btn-link" ng-click="chat({chatId:chat.id})" type="submit">{{chat.name}}</button>
         <td>
-          <div class="btn-group" align="right">
-            <button class="btn btn-sm btn-success" type="submit">Chat</button>
-            <button class="btn btn-sm btn-link" ng-click="remove({chatId:chat.id})" type="submit">Delete</button>
-          </div>
+          <button class="btn btn-sm btn-link" ng-click="remove({chatId:chat.id})" type="submit">Delete</button>
         </td>
       </tr>
     </table>
