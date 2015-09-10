@@ -45,7 +45,7 @@ public class ChatServiceImpl implements ChatService {
 
     private List<Long> addIfNotContains(Long accountId, List<Long> accounts) {
         if (accounts == null) {
-            List<Long> result = new ArrayList<Long>(1);
+            List<Long> result = new ArrayList<>(1);
             result.add(accountId);
             return result;
         } else if (!accounts.contains(accountId)) {
