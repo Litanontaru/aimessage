@@ -20,7 +20,7 @@ import java.net.URI;
 import java.util.*;
 
 @Controller
-@RequestMapping("/accounts")
+@RequestMapping("rest/accounts")
 public class AccountController {
     private final AccountService accountService;
 

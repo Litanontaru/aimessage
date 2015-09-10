@@ -9,9 +9,6 @@
         http://www.springframework.org/schema/data/mongo
         http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
 
-    <context:annotation-config/>
-    <context:component-scan base-package="org.aim.aimessage.core"/>
-
     <context:property-placeholder location="classpath:database.properties"/>
     <mongo:mongo host="${mongo.host}" port="${mongo.port}"/>
     <mongo:db-factory dbname="${mongo.db}" mongo-ref="mongo"/>

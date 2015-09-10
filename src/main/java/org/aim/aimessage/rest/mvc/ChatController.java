@@ -24,7 +24,7 @@ import javax.inject.Inject;
 import java.util.List;
 
 @Controller
-@RequestMapping("/chat")
+@RequestMapping("rest/chat")
 public class ChatController {
     private final ChatService chatService;
     private final AccountService accountService;
