@@ -1,6 +1,5 @@
 package org.aim.aimessage.core.repository;
 
-import org.aim.aimessage.core.model.Account;
 import org.aim.aimessage.core.model.Chat;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
