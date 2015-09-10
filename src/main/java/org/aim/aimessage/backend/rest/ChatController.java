@@ -1,14 +1,14 @@
-package org.aim.aimessage.rest.mvc;
+package org.aim.aimessage.backend.rest;
 
 import org.aim.aimessage.core.model.Account;
 import org.aim.aimessage.core.model.Chat;
 import org.aim.aimessage.core.service.AccountService;
 import org.aim.aimessage.core.service.ChatService;
-import org.aim.aimessage.rest.exception.ForbiddenException;
-import org.aim.aimessage.rest.resources.ChatListResource;
-import org.aim.aimessage.rest.resources.ChatResource;
-import org.aim.aimessage.rest.resources.asm.ChatListResourceAsm;
-import org.aim.aimessage.rest.resources.asm.ChatResourceAsm;
+import org.aim.aimessage.backend.rest.exception.ForbiddenException;
+import org.aim.aimessage.backend.rest.resources.ChatListResource;
+import org.aim.aimessage.backend.rest.resources.ChatResource;
+import org.aim.aimessage.backend.rest.resources.asm.ChatListResourceAsm;
+import org.aim.aimessage.backend.rest.resources.asm.ChatResourceAsm;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

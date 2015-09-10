@@ -1,4 +1,4 @@
-package org.aim.aimessage.rest.resources;
+package org.aim.aimessage.backend.rest.resources;
 
 import org.aim.aimessage.core.model.Chat;
 import org.springframework.hateoas.ResourceSupport;

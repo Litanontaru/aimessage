@@ -1,4 +1,4 @@
-package org.aim.aimessage.rest.resources;
+package org.aim.aimessage.backend.rest.resources;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

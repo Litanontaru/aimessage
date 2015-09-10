@@ -1,8 +1,8 @@
-package org.aim.aimessage.rest.resources.asm;
+package org.aim.aimessage.backend.rest.resources.asm;
 
 import org.aim.aimessage.core.model.Account;
-import org.aim.aimessage.rest.mvc.AccountController;
-import org.aim.aimessage.rest.resources.AccountResource;
+import org.aim.aimessage.backend.rest.AccountController;
+import org.aim.aimessage.backend.rest.resources.AccountResource;
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;

@@ -1,4 +1,4 @@
-package org.aim.aimessage.rest.exception;
+package org.aim.aimessage.backend.rest.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

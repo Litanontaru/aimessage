@@ -1,8 +1,8 @@
-package org.aim.aimessage.rest.resources.asm;
+package org.aim.aimessage.backend.rest.resources.asm;
 
 import org.aim.aimessage.core.model.Chat;
-import org.aim.aimessage.rest.mvc.ChatController;
-import org.aim.aimessage.rest.resources.ChatResource;
+import org.aim.aimessage.backend.rest.ChatController;
+import org.aim.aimessage.backend.rest.resources.ChatResource;
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;

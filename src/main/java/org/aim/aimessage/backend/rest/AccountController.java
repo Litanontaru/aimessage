@@ -1,13 +1,13 @@
-package org.aim.aimessage.rest.mvc;
+package org.aim.aimessage.backend.rest;
 
 import org.aim.aimessage.core.model.Account;
 import org.aim.aimessage.core.service.AccountService;
 import org.aim.aimessage.core.service.exception.AccountExistsException;
-import org.aim.aimessage.rest.exception.ConflictException;
-import org.aim.aimessage.rest.resources.AccountListResource;
-import org.aim.aimessage.rest.resources.AccountResource;
-import org.aim.aimessage.rest.resources.asm.AccountListResourceAsm;
-import org.aim.aimessage.rest.resources.asm.AccountResourceAsm;
+import org.aim.aimessage.backend.rest.exception.ConflictException;
+import org.aim.aimessage.backend.rest.resources.AccountListResource;
+import org.aim.aimessage.backend.rest.resources.AccountResource;
+import org.aim.aimessage.backend.rest.resources.asm.AccountListResourceAsm;
+import org.aim.aimessage.backend.rest.resources.asm.AccountResourceAsm;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
