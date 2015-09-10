@@ -1,4 +1,4 @@
-package org.aim.aimessage.core.security;
+package org.aim.aimessage.backend.security;
 
 import org.aim.aimessage.core.model.Account;
 import org.aim.aimessage.core.service.AccountService;

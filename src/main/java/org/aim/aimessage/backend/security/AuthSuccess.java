@@ -1,4 +1,4 @@
-package org.aim.aimessage.core.security;
+package org.aim.aimessage.backend.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
