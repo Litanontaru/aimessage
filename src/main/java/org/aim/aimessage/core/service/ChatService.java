@@ -1,6 +1,7 @@
 package org.aim.aimessage.core.service;
 
 import org.aim.aimessage.core.model.Chat;
+import org.aim.aimessage.core.model.ChatEntry;
 
 import java.util.List;
 
@@ -9,4 +10,5 @@ public interface ChatService {
     Chat find(Long chatId);
     void create(Chat chat, Long accountId);
     Chat remove(Long id);
+    List<ChatEntry> getAll(Long chatId);
 }

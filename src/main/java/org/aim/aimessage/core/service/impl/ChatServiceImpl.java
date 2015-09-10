@@ -1,6 +1,8 @@
 package org.aim.aimessage.core.service.impl;
 
 import org.aim.aimessage.core.model.Chat;
+import org.aim.aimessage.core.model.ChatEntry;
+import org.aim.aimessage.core.repository.ChatEntryRepo;
 import org.aim.aimessage.core.repository.ChatRepo;
 import org.aim.aimessage.core.repository.SequenceRepo;
 import org.aim.aimessage.core.service.ChatService;
@@ -14,11 +16,13 @@ import java.util.List;
 public class ChatServiceImpl implements ChatService {
     private final SequenceRepo sequenceRepo;
     private final ChatRepo chatRepo;
+    private final ChatEntryRepo chatEntryRepo;
 
     @Inject
-    public ChatServiceImpl(SequenceRepo sequenceRepo, ChatRepo chatRepo) {
+    public ChatServiceImpl(SequenceRepo sequenceRepo, ChatRepo chatRepo, ChatEntryRepo chatEntryRepo) {
         this.sequenceRepo = sequenceRepo;
         this.chatRepo = chatRepo;
+        this.chatEntryRepo = chatEntryRepo;
     }
 
     @Override
@@ -53,5 +57,10 @@ public class ChatServiceImpl implements ChatService {
     @Override
     public Chat remove(Long id) {
         return chatRepo.remove(id);
+    }
+
+    @Override
+    public List<ChatEntry> getAll(Long chatId) {
+        return chatEntryRepo.getAll(chatId);
     }
 }

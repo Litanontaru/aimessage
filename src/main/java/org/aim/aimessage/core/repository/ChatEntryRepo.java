@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;
+import java.util.List;
 
 @Repository
 public class ChatEntryRepo {
@@ -38,5 +39,9 @@ public class ChatEntryRepo {
 
     public ChatEntry get(Long id) {
         return mongoOperations.findOne(Query.query(Criteria.where("id").is(id)), ChatEntry.class);
+    }
+    
+    public List<ChatEntry> getAll(Long chatId) {
+        return mongoOperations.find(Query.query(Criteria.where("chatId").is(chatId)), ChatEntry.class);
     }
 }
