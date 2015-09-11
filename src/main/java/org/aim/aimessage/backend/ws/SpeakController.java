@@ -23,12 +23,12 @@ public class SpeakController {
         this.chatService = chatService;
     }
 
-    @MessageMapping("/{chatId}")
+    @MessageMapping("/history/{chatId}")
     public void history(@DestinationVariable("chatId") String chatId, Principal principal) {
         List<SpeakMessage> history = chatService.getAll(Long.parseLong(chatId));
         messagingTemplate.convertAndSendToUser(
                 principal.getName(),
-                "/queue/" + chatId,
+                "/queue/history/" + chatId,
                 new SpeakMessageList(history)
         );
     }
