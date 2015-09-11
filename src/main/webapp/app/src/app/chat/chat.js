@@ -5,20 +5,6 @@ angular.module('ngBoilerplate.chat', [
     'ui.bootstrap',
     'ngBoilerplate.account'
 ])
-
-    .config(function config($stateProvider) {
-        $stateProvider.state('chat', {
-            url: '/chat',
-            views: {
-                "main": {
-                    controller: 'ChatCtrl',
-                    templateUrl: 'chat/chat.tpl.html'
-                }
-            },
-            data: {pageTitle: 'Chats'}
-        });
-    })
-
     .factory('chatService', function ($resource, sessionService) {
         var service = {};
         service.getAllChats = function () {
