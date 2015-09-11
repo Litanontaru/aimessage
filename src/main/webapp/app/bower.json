@@ -6,7 +6,9 @@
     "angular-mocks": "~1.2",
     "bootstrap": "~3.1",
     "angular-bootstrap": "~0.10.0",
-    "angular-ui-router": "~0.2"
+    "angular-ui-router": "~0.2",
+    "sockjs": "~0.3.4",
+    "stomp-websocket": "stomp-websocket#~2.3.4"
   },
   "dependencies": {}
 }
