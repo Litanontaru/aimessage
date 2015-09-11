@@ -1,7 +1,8 @@
 package org.aim.aimessage.backend.ws;
 
 import org.aim.aimessage.core.service.ChatService;
-import org.aim.aimessage.core.service.util.ChatEntryVO;
+import org.aim.aimessage.core.service.util.SpeakMessage;
+import org.aim.aimessage.core.service.util.SpeakMessageList;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
@@ -24,11 +25,11 @@ public class SpeakController {
 
     @MessageMapping("/{chatId}")
     public void history(@DestinationVariable("chatId") String chatId, Principal principal) {
-        List<ChatEntryVO> history = chatService.getAll(Long.parseLong(chatId));
+        List<SpeakMessage> history = chatService.getAll(Long.parseLong(chatId));
         messagingTemplate.convertAndSendToUser(
                 principal.getName(),
                 "/queue/" + chatId,
-                new SpeakMessage(history)
+                new SpeakMessageList(history)
         );
     }
 }

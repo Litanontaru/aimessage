@@ -8,7 +8,7 @@ import org.aim.aimessage.core.repository.ChatEntryRepo;
 import org.aim.aimessage.core.repository.ChatRepo;
 import org.aim.aimessage.core.repository.SequenceRepo;
 import org.aim.aimessage.core.service.ChatService;
-import org.aim.aimessage.core.service.util.ChatEntryVO;
+import org.aim.aimessage.core.service.util.SpeakMessage;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -67,9 +67,9 @@ public class ChatServiceImpl implements ChatService {
     }
 
     @Override
-    public List<ChatEntryVO> getAll(Long chatId) {
+    public List<SpeakMessage> getAll(Long chatId) {
         List<ChatEntry> entries = chatEntryRepo.getAll(chatId);
-        List<ChatEntryVO> result = new ArrayList<>(entries.size());
+        List<SpeakMessage> result = new ArrayList<>(entries.size());
         Map<Long, String> accountNameMapring = new HashMap<>();
         for (ChatEntry entry : entries) {
             Long accountId = entry.getAccountId();
@@ -81,7 +81,7 @@ public class ChatServiceImpl implements ChatService {
                 name = account == null ? "unknown" : account.getName();
                 accountNameMapring.put(accountId, name);
             }
-            result.add(new ChatEntryVO(name, entry.getUpdated(), entry.getDt(), entry.getPhrase()));
+            result.add(new SpeakMessage(name, entry.getUpdated(), entry.getDt(), entry.getPhrase()));
         }
         return result;
     }

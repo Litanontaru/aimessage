@@ -2,13 +2,13 @@ package org.aim.aimessage.core.service.util;
 
 import java.util.Date;
 
-public class ChatEntryVO {
+public class SpeakMessage {
     private String user;
     private Boolean updated;
     private Date dt;
     private String phrase;
 
-    public ChatEntryVO(String user, Boolean updated, Date dt, String phrase) {
+    public SpeakMessage(String user, Boolean updated, Date dt, String phrase) {
         this.user = user;
         this.updated = updated;
         this.dt = dt;
