@@ -67,7 +67,7 @@ public class ChatServiceImpl implements ChatService {
     }
 
     @Override
-    public List<SpeakMessage> getAll(Long chatId) {
+    public List<SpeakMessage> getHistory(Long chatId) {
         List<ChatEntry> entries = chatEntryRepo.getAll(chatId);
         List<SpeakMessage> result = new ArrayList<>(entries.size());
         Map<Long, String> accountNameMapring = new HashMap<>();

@@ -25,7 +25,7 @@ public class SpeakController {
 
     @MessageMapping("/history/{chatId}")
     public void history(@DestinationVariable("chatId") String chatId, Principal principal) {
-        List<SpeakMessage> history = chatService.getAll(Long.parseLong(chatId));
+        List<SpeakMessage> history = chatService.getHistory(Long.parseLong(chatId));
         messagingTemplate.convertAndSendToUser(
                 principal.getName(),
                 "/queue/history/" + chatId,

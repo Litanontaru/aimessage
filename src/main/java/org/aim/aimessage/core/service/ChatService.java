@@ -11,5 +11,5 @@ public interface ChatService {
     void create(Chat chat, Long accountId);
     Chat remove(Long id);
 
-    List<SpeakMessage> getAll(Long chatId);
+    List<SpeakMessage> getHistory(Long chatId);
 }
