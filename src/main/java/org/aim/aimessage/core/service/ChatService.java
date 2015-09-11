@@ -12,4 +12,5 @@ public interface ChatService {
     Chat remove(Long id);
 
     List<SpeakMessage> getHistory(Long chatId);
+    SpeakMessage newMessage(Long chatId, String accountLogin, String phrase);
 }
